@@ -10,9 +10,9 @@ dayjs.extend(relativeTime);
 
 type DateType = string | number | Date | dayjs.Dayjs;
 interface FormatOptions {
-  showTime?: boolean
-  timeFormat?: string
-  isUtc?: boolean
+  showTime?: boolean;
+  timeFormat?: string;
+  isUtc?: boolean;
 }
 
 /**
@@ -24,7 +24,7 @@ export class DateUtils {
    * @param timezone - 时区名称 如 'Asia/Shanghai'
    */
   static setDefaultTimezone(timezone: string): void {
-    dayjs.tz.setDefault(timezone)
+    dayjs.tz.setDefault(timezone);
   }
 
   /**
@@ -32,20 +32,17 @@ export class DateUtils {
    * @param input - 可接受多种日期格式
    * @param timezone - 指定时区
    */
-  static parse(
-    input?: DateType,
-    timezone?: string
-  ): dayjs.Dayjs {
-    if (!input) return dayjs()
-    const d = dayjs(input)
-    return timezone ? d.tz(timezone) : d
+  static parse(input?: DateType, timezone?: string): dayjs.Dayjs {
+    if (!input) return dayjs();
+    const d = dayjs(input);
+    return timezone ? d.tz(timezone) : d;
   }
 
   /**
    * 智能格式化日期
    * @param input - 日期输入
    * @param format - 格式字符串或选项
-   * @example 
+   * @example
    * format(new Date()) // "2023-10-08 14:30"
    * format(new Date(), { showTime: false }) // "2023-10-08"
    */
@@ -53,23 +50,26 @@ export class DateUtils {
     input: DateType,
     format: string | FormatOptions = {
       showTime: true,
-      timeFormat: 'HH:mm',
-      isUtc: false
+      timeFormat: "HH:mm",
+      isUtc: false,
     }
   ): string {
-    const options = typeof format === 'string' 
-      ? { format } 
-      : {
-          format: `YYYY-MM-DD${format.showTime ? ` ${format.timeFormat}` : ''}`,
-          ...format
-        }
+    const options =
+      typeof format === "string"
+        ? { format }
+        : {
+            format: `YYYY-MM-DD${
+              format.showTime ? ` ${format.timeFormat}` : ""
+            }`,
+            ...format,
+          };
 
-    let instance = this.parse(input)
+    let instance = this.parse(input);
     if (options.isUtc) {
-      instance = instance.utc()
+      instance = instance.utc();
     }
-    
-    return instance.format(options.format)
+
+    return instance.format(options.format);
   }
 
   /**
@@ -78,15 +78,9 @@ export class DateUtils {
    * @param baseDate - 基准日期（默认当前时间）
    * @param locale - 语言代码
    */
-  static fromNow(
-    input: DateType,
-    baseDate?: DateType,
-    locale = 'en'
-  ): string {
-    const base = baseDate ? this.parse(baseDate) : dayjs()
-    return this.parse(input)
-      .locale(locale)
-      .from(base)
+  static fromNow(input: DateType, baseDate?: DateType, locale = "en"): string {
+    const base = baseDate ? this.parse(baseDate) : dayjs();
+    return this.parse(input).locale(locale).from(base);
   }
 
   /**
@@ -98,14 +92,14 @@ export class DateUtils {
   static *dateRange(
     start: DateType,
     end: DateType,
-    interval: dayjs.ManipulateType = 'day'
-  ): Generator<string> {
-    let current = this.parse(start)
-    const endDate = this.parse(end)
+    interval: dayjs.ManipulateType = "day"
+  ) {
+    let current = this.parse(start);
+    const endDate = this.parse(end);
 
-    while (current.isBefore(endDate) {
-      yield current.format('YYYY-MM-DD')
-      current = current.add(1, interval)
+    while (current.isBefore(endDate)) {
+      yield current.format("YYYY-MM-DD");
+      current = current.add(1, interval);
     }
   }
 
@@ -120,9 +114,7 @@ export class DateUtils {
     fromZone: string,
     toZone: string
   ): string {
-    return this.parse(input, fromZone)
-      .tz(toZone)
-      .format()
+    return this.parse(input, fromZone).tz(toZone).format();
   }
 
   /**
@@ -130,9 +122,9 @@ export class DateUtils {
    * @param input - 日期输入
    */
   static isValid(input: DateType): boolean {
-    return this.parse(input).isValid()
+    return this.parse(input).isValid();
   }
 }
 
 // 默认导出实例（快捷方式）
-export default new DateUtils()
+export default new DateUtils();

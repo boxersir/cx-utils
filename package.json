@@ -6,9 +6,17 @@
   "types": "dist/types/index.d.ts",
   "sideEffects": false,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "docs": "typedoc --out docs src --hideGenerator",
+    "build": "rollup -c",
+    "prepublishOnly": "npm run build && npm run test",
+    "test": "vitest",
+    "version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md"
   },
+  "files": [
+    "dist"
+  ],
   "keywords": [],
+  "type": "module",
   "author": "",
   "license": "ISC",
   "description": "",
@@ -16,7 +24,12 @@
     "dayjs": "^1.11.13"
   },
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^28.0.2",
+    "@rollup/plugin-node-resolve": "^16.0.0",
+    "@rollup/plugin-typescript": "^12.1.2",
     "rollup": "^4.34.8",
+    "tslib": "^2.8.1",
+    "typedoc": "^0.27.9",
     "typescript": "^5.7.3",
     "vitest": "^3.0.7"
   }
