@@ -1,7 +1,7 @@
 import typescript from '@rollup/plugin-typescript'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
-// import { terser } from 'rollup-plugin-terser'
+import terser from '@rollup/plugin-terser';
 
 export default {
   input: 'src/index.ts',
@@ -23,6 +23,6 @@ export default {
     typescript({
       tsconfig: './tsconfig.json'
     }),
-    // terser()
+    terser()
   ]
 }
