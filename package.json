@@ -1,10 +1,11 @@
 {
-  "name": "@cx-utils",
+  "name": "cx-utils",
   "version": "1.0.0",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/types/index.d.ts",
   "sideEffects": false,
+  "private": false,
   "scripts": {
     "docs": "typedoc --out docs src --hideGenerator",
     "build": "rollup -c",
@@ -17,9 +18,8 @@
   ],
   "keywords": [],
   "type": "module",
-  "author": "",
+  "author": "caixin185",
   "license": "ISC",
-  "description": "",
   "dependencies": {
     "dayjs": "^1.11.13"
   },
@@ -34,5 +34,18 @@
     "typedoc": "^0.27.9",
     "typescript": "^5.7.3",
     "vitest": "^3.0.7"
-  }
+  },
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/boxersir/cx-utils.git"
+  },
+  "bugs": {
+    "url": "https://github.com/boxersir/cx-utils/issues"
+  },
+  "homepage": "https://github.com/boxersir/cx-utils#readme",
+  "description": ""
 }

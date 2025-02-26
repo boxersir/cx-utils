@@ -97,7 +97,7 @@ export class DateUtils {
     let current = this.parse(start);
     const endDate = this.parse(end);
 
-    while (current.isBefore(endDate)) {
+    while (current.isBefore(endDate) || current.isSame(endDate)) {
       yield current.format("YYYY-MM-DD");
       current = current.add(1, interval);
     }
@@ -122,6 +122,9 @@ export class DateUtils {
    * @param input - 日期输入
    */
   static isValid(input: DateType): boolean {
+    if (isNaN(Date.parse(input as string))) {
+      return false;
+    }
     return this.parse(input).isValid();
   }
 }
