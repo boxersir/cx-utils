@@ -1,3 +1,10 @@
+/*
+ * @Author: caixin caixin185@163.com
+ * @Date: 2025-02-26 10:57:19
+ * @LastEditors: caixin
+ * @LastEditTime: 2025-03-12 18:09:48
+ * @Description: file content
+ */
 /**深copy */
 export function deepCopy<T>(obj: T, hash = new WeakMap<object, any>()): T {
   if (obj === null || typeof obj !== "object") return obj;
@@ -24,4 +31,8 @@ export function deepCopy<T>(obj: T, hash = new WeakMap<object, any>()): T {
     }
   }
   return clone as T;
+}
+/**判断是否对象*/
+export function isObject(obj: any) {
+  return obj !== null && typeof obj === "object";
 }

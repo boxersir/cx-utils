@@ -1,8 +1,8 @@
 {
-  "name": "cx-utils",
-  "version": "1.0.0",
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
+  "name": "@caixin185-cx/utils",
+  "version": "1.0.3",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
   "types": "dist/types/index.d.ts",
   "sideEffects": false,
   "private": false,
@@ -14,14 +14,19 @@
     "version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md"
   },
   "files": [
-    "dist"
+    "dist",
+    "src"
   ],
   "keywords": [],
   "type": "module",
   "author": "caixin185",
   "license": "ISC",
   "dependencies": {
-    "dayjs": "^1.11.13"
+    "dayjs": "^1.11.13",
+    "electron": "^35.0.1",
+    "electron-debug": "^4.1.0",
+    "electron-screenshots": "^0.5.27",
+    "uuid": "^11.1.0"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^28.0.2",

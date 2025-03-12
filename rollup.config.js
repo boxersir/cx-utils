@@ -7,12 +7,12 @@ export default {
   input: 'src/index.ts',
   output: [
     {
-      dir: 'dist/esm',
+      dir: 'dist',
       format: 'esm',
       preserveModules: true
     },
     {
-      dir: 'dist/cjs',
+      dir: 'dist',
       format: 'cjs',
       preserveModules: true
     }
